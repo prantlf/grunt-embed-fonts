@@ -82,6 +82,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding
 style.  Add unit tests for any new or changed functionality. Lint and test
 your code using Grunt.
 
+## Release History
+
+ * 2015-07-24   v0.1.1   Add support for NodeJS 0.10.x
+ * 2015-07-24   v0.1.0   Initial release
+
 ## License
 
 Copyright (c) 2015 Ferdinand Prantl
