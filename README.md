@@ -8,7 +8,8 @@ stylesheets using data URIs.
 When you develop a HTML5 component, your styling may include special fonts.
 If the page, which hosts your component has not the same origin, the server
 has to include the CORS headers in the response with the font file
-(`Access-Control-Allow-Origin: *` at least).  You should always try to
+(`Access-Control-Allow-Origin: *` at least) according to the
+[W3C Font fetching requirements].  You should always try to
 configure the web server to do it to get the best performance.  If you
 cannot, you can embed the fonts in the CSS files by this task, but the
 size of the base64-encoded fonts for the page to load will be circa 35%
@@ -93,3 +94,4 @@ Licensed under the MIT license.
 [Grunt]: https://gruntjs.com
 [Gruntfile]: http://gruntjs.com/sample-gruntfile
 [Getting Gtarted]: https://github.com/gruntjs/grunt/wiki/Getting-started
+[W3C Font fetching requirements]: http://www.w3.org/TR/css-fonts-3/#font-fetching-requirements
