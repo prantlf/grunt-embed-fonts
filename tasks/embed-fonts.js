@@ -14,6 +14,10 @@ var path = require('path'),
     fontUrl = /url\(["']?([^\?#"'\)]+\.(?:eot|svg|ttf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/g,
     fontType = /\.([a-zA-Z]+)2?$/;
 
+if (!path.isAbsolute) {
+  path.isAbsolute = require('path-is-absolute');
+}
+
 module.exports = function (grunt) {
 
   function getDataUri(fontFile) {

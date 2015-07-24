@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/prantlf/grunt-embed-fonts/issues"
   },
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
@@ -51,5 +52,8 @@
     "embed",
     "data-URI",
     "base64"
-  ]
+  ],
+  "dependencies": {
+    "path-is-absolute": "~1.0.0"
+  }
 }
