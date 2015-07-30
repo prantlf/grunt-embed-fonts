@@ -6,3 +6,5 @@ before_install:
     - npm install -g npm
 before_script :
     - npm install -g grunt-cli
+after_script:
+    - npm run coveralls
