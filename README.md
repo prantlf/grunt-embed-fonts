@@ -40,7 +40,7 @@ grunt.initConfig({
   embedFonts: {
     all: {
       files: {
-        'dist/css/style.css': ['src/css/style.css]'
+        'dist/css/style.css': ['src/css/style.css']
       }
     }
   }
