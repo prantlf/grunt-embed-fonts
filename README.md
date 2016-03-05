@@ -84,6 +84,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2016-03-05   v0.1.3   Update dependencies, improve build testing
  * 2016-01-09   v0.1.2   Fix e-mail, update dependencies and copyright
                          year, bump version number
  * 2015-07-24   v0.1.1   Add support for NodeJS 0.10.x
