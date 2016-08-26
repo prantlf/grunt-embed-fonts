@@ -84,6 +84,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2016-26-08   v0.2.0   Upgrade to Grunt 1.x
  * 2016-03-05   v0.1.3   Update dependencies, improve build testing
  * 2016-01-09   v0.1.2   Fix e-mail, update dependencies and copyright
                          year, bump version number
