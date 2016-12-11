@@ -23,7 +23,9 @@ module.exports = function (grunt) {
     embedFonts: {
       all: {
         files: {
-          'test/output.css': ['test/input.css']
+          'test/first/output.css': ['test/first/input.css'],
+          // Test different directories in single task
+          'test/second/output.css': ['test/second/input.css']
         }
       }
     },

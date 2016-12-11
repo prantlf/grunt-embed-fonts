@@ -1,7 +1,7 @@
 // grunt-embed-fonts
 // https://github.com/prantlf/grunt-embed-fonts
 //
-// Copyright (c) 2015 Ferdinand Prantl
+// Copyright (c) 2015-2016 Ferdinand Prantl
 // Licensed under the MIT license.
 //
 // Injects content of font files into stylesheets by replacing the relative
@@ -72,6 +72,9 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('embedFonts', "Replace font URLs in stylesheets with data URIs including base64-encoded file content", function () {
     var options = this.options();
     this.files.forEach(function (file) {
+      // Reset relative path to embedded fonts before processing another
+      // stylesheet; stylesheets can be in different directories
+      options.baseDir = undefined;
       processStylesheet(file.src[0], file.dest, options);
     });
   });

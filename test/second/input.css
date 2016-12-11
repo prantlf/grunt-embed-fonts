@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Test';
+  src: url(fonts2/file7.eot) format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Test'
+}

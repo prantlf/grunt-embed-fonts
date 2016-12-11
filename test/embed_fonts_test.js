@@ -4,10 +4,17 @@ var fs = require('fs');
 
 exports.embedFonts = {
 
-  all: function (test) {
-    var expected = fs.readFileSync('test/expected.css').toString(),
-        actual = fs.readFileSync('test/output.css').toString();
+  first: function (test) {
+    var expected = fs.readFileSync('test/first/expected.css').toString(),
+        actual = fs.readFileSync('test/first/output.css').toString();
     test.equal(expected, actual, 'should encode and embed the font files');
+    test.done();
+  },
+
+  second: function (test) {
+    var expected = fs.readFileSync('test/second/expected.css').toString(),
+        actual = fs.readFileSync('test/second/output.css').toString();
+    test.equal(expected, actual, 'should handle different directories in single task');
     test.done();
   }
 
