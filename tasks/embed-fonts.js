@@ -11,7 +11,7 @@
 
 var path = require('path'),
     fontFace = /@font-face\s*\{[^\}]*}/g,
-    fontUrl = /url\(["']?([^\?#"'\)]+\.(?:eot|svg|ttf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/g,
+    fontUrl = /url\(["']?([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/g,
     fontType = /\.([a-zA-Z]+)2?$/;
 
 if (!path.isAbsolute) {
