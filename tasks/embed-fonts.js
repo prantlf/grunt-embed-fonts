@@ -22,8 +22,8 @@ module.exports = function (grunt) {
 
   function getDataUri(fontFile) {
     var typeMatch = fontType.exec(fontFile),
-        faceContent = grunt.file.read(fontFile),
-        fontEncoded = new Buffer(faceContent).toString('base64');
+        faceContent = grunt.file.read(fontFile, {encoding: null}),
+        fontEncoded = faceContent.toString('base64');
     return 'data:font/' + typeMatch[1] + ';base64,' + fontEncoded;
   }
 
