@@ -1,7 +1,7 @@
 {
   "name": "grunt-embed-fonts",
   "description": "Grunt task to inject content of font files into stylesheets using data URIs.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "homepage": "https://github.com/prantlf/grunt-embed-fonts",
   "author": {
     "name": "Ferdinand Prantl",

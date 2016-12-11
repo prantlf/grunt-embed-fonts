@@ -16,6 +16,13 @@ exports.embedFonts = {
         actual = fs.readFileSync('test/second/output.css').toString();
     test.equal(expected, actual, 'should handle different directories in single task');
     test.done();
+  },
+
+  xFont: function (test) {
+    var expected = fs.readFileSync('test/x-font/expected.css').toString(),
+        actual = fs.readFileSync('test/x-font/output.css').toString();
+    test.equal(expected, actual, 'should allow using "application/x-font-..." MIME Type');
+    test.done();
   }
 
 };

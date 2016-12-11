@@ -21,11 +21,19 @@ module.exports = function (grunt) {
     },
 
     embedFonts: {
-      all: {
+      normal: {
         files: {
           'test/first/output.css': ['test/first/input.css'],
           // Test different directories in single task
           'test/second/output.css': ['test/second/input.css']
+        }
+      },
+      xFontMimeType: {
+        options: {
+          xFontMimeType: true
+        },
+        files: {
+          'test/x-font/output.css': ['test/x-font/input.css']
         }
       }
     },

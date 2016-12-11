@@ -49,7 +49,77 @@ grunt.initConfig({
 The configuration consists of key-value pairs with the output stylesheet
 path as a key pointing to the input stylesheet file.
 
-Then, load the plugin:
+An example from the input stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url(fonts/test.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+An example from the generated output stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:font/woff;base64,ZmlsZTgK") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+### Options
+
+#### xFontMimeType
+Type: `Boolean`
+Default value: `false`
+
+Enable using "application/x-font-..." MIME Type in the embedded font face
+definition instead of "font/...".
+
+```js
+grunt.initConfig({
+  embedFonts: {
+    old: {
+      options: {
+        xFontMimeType: true
+      },
+      files: {
+        'dist/css/style.css': ['src/css/style.css']
+      }
+    }
+  }
+});
+```
+
+An example from the input stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url(fonts/test.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+An example from the generated output stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/x-font-woff;base64,ZmlsZT...") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+### Loading
+
+Load the plugin in `Gruntfile.js`:
 
 ```javascript
 grunt.loadNpmTasks('grunt-embed-fonts');
@@ -84,6 +154,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2016-12-11   v0.3.0   Allow using "application/x-font-..." MIME type
  * 2016-12-11   v0.2.2   Fix processing stylesheets from multiple directories,
                          add support for otf fonts
  * 2016-12-11   v0.2.1   Fix malformed BASE64 encoding

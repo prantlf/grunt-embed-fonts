@@ -20,11 +20,12 @@ if (!path.isAbsolute) {
 
 module.exports = function (grunt) {
 
-  function getDataUri(fontFile) {
+  function getDataUri(fontFile, options) {
     var typeMatch = fontType.exec(fontFile),
         faceContent = grunt.file.read(fontFile, {encoding: null}),
-        fontEncoded = faceContent.toString('base64');
-    return 'data:font/' + typeMatch[1] + ';base64,' + fontEncoded;
+        fontEncoded = faceContent.toString('base64'),
+        mimeTypePrefix = options.xFontMimeType ? 'application/x-font-' : 'font/';
+    return 'data:' + mimeTypePrefix + typeMatch[1] + ';base64,' + fontEncoded;
   }
 
   function embedFontUrls(faceContent, options) {
@@ -36,7 +37,7 @@ module.exports = function (grunt) {
           fontFile = path.join(options.baseDir, fontFile);
         }
         var fontAnchor = urlMatch[2] || '',
-            fontEmbedded = 'url("' + getDataUri(fontFile) + fontAnchor + '")';
+            fontEmbedded = 'url("' + getDataUri(fontFile, options) + fontAnchor + '")';
         faceContent = faceContent.substr(0, urlMatch.index) + fontEmbedded +
           faceContent.substr(urlMatch.index + urlMatch[0].length);
       }
