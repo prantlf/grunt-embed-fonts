@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Test';
-  src: url("data:application/vnd.ms-fontobject;base64,ZmlsZTcK") format("embedded-opentype");
+  src: url(fonts/file9.woff) format("woff");
   font-weight: 400;
   font-style: normal;
 }

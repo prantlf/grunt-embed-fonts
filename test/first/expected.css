@@ -1,20 +1,20 @@
 @font-face {
   font-family: 'Test';
-  src: url("data:font/eot;base64,ZmlsZTE=");
-  src: url("data:font/eot;base64,ZmlsZTE=?#iefix") format("embedded-opentype"),
-       url("data:font/woff;base64,ZmlsZTQ=") format("woff"),
-       url("data:font/svg;base64,ZmlsZTI=#test") format("svg"),
-       url("data:font/otf;base64,ZmlsZTYK") format("opentype");
+  src: url("data:application/vnd.ms-fontobject;base64,ZmlsZTE=");
+  src: url("data:application/vnd.ms-fontobject;base64,ZmlsZTE=?#iefix") format("embedded-opentype"),
+       url("data:application/font-woff;base64,ZmlsZTQ=") format("woff"),
+       url("data:image/svg+xml;base64,ZmlsZTI=#test") format("svg"),
+       url("data:application/font-sfnt;base64,ZmlsZTYK") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Test';
-  src: url("data:font/woff;base64,ZmlsZTU=") format("woff2"),
+  src: url("data:font/woff2;base64,ZmlsZTU=") format("woff2"),
        url("http://test/font.woff") format("woff"),
        url("data:font/woff;base64,ZmlsZQo=") format("woff"),
-       url("data:font/ttf;base64,ZmlsZTM=") format("truetype");
+       url("data:application/font-sfnt;base64,ZmlsZTM=") format("truetype");
   font-weight: 400;
   font-style: italic;
 }

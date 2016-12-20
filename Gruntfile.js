@@ -28,12 +28,25 @@ module.exports = function (grunt) {
           'test/second/output.css': ['test/second/input.css']
         }
       },
-      xFontMimeType: {
+      capitals: {
+        files: {
+          'test/capitals/output.css': ['test/capitals/input.css']
+        }
+      },
+      'forced-font': {
+        options: {
+          fontMimeType: true
+        },
+        files: {
+          'test/forced-font/output.css': ['test/forced-font/input.css']
+        }
+      },
+      'forced-x-font': {
         options: {
           xFontMimeType: true
         },
         files: {
-          'test/x-font/output.css': ['test/x-font/input.css']
+          'test/forced-x-font/output.css': ['test/forced-x-font/input.css']
         }
       }
     },

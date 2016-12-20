@@ -11,8 +11,16 @@
 
 var path = require('path'),
     fontFace = /@font-face\s*\{[^\}]*}/g,
-    fontUrl = /url\(["']?([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/g,
-    fontType = /\.([a-zA-Z]+)2?$/;
+    fontUrl = /url\(["']?([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/ig,
+    fontType = /\.((?:[a-zA-Z]+)2?)$/,
+    fontMimeTypes = {
+      eot: 'application/vnd.ms-fontobject',
+      otf: 'application/font-sfnt',
+      svg: 'image/svg+xml',
+      ttf: 'application/font-sfnt',
+      woff: 'application/font-woff',
+      woff2: 'font/woff2'
+    };
 
 if (!path.isAbsolute) {
   path.isAbsolute = require('path-is-absolute');
@@ -24,8 +32,17 @@ module.exports = function (grunt) {
     var typeMatch = fontType.exec(fontFile),
         faceContent = grunt.file.read(fontFile, {encoding: null}),
         fontEncoded = faceContent.toString('base64'),
-        mimeTypePrefix = options.xFontMimeType ? 'application/x-font-' : 'font/';
-    return 'data:' + mimeTypePrefix + typeMatch[1] + ';base64,' + fontEncoded;
+        fontMimeType;
+    typeMatch = typeMatch[1].toLowerCase();
+    if (options.fontMimeType) {
+      fontMimeType = 'font/' + typeMatch;
+    } else if (options.xFontMimeType) {
+      fontMimeType = 'application/x-font-' + typeMatch;
+    } else {
+      fontMimeType = fontMimeTypes[typeMatch];
+    }
+    grunt.verbose.writeln('Embedding "' + fontFile + '" as "' + fontMimeType + '".');
+    return 'data:' + fontMimeType + ';base64,' + fontEncoded;
   }
 
   function embedFontUrls(faceContent, options) {

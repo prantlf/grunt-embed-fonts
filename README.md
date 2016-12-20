@@ -17,6 +17,12 @@ greater.  Additionally, the browser will load all fonts immediately with
 the stylesheet, otherwise only the needed font faces and formats would be
 downloaded.
 
+From version 0.4.0 on, MIME types used by default comply with [IANA] and
+[W3C WOFF] font MIME type specifications.  If you need MIME types generated
+by previous versions (either all types font/<file ext> or all types
+application/x-font-<file ext>), look at options `fontMimeType` and
+`xFontMimeType` below.
+
 ## Installation
 
 You need [node >= 0.10][node], [npm] and [grunt >= 0.4][Grunt] installed
@@ -65,20 +71,79 @@ An example from the generated output stylesheet:
 ```css
 @font-face {
   font-family: 'Test';
-  src: url("data:font/woff;base64,ZmlsZTgK") format("woff");
+  src: url("data:application/font-woff;base64,ZmlsZTgK") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 ```
 
+MIME types are assigned to font files by their file extension according
+to the following table:
+
+| File ext. | MIME Type                     | Since         | Note                                |
+| --------- | ----------------------------- | ------------- | ----------------------------------- |
+| .eot      | application/vnd.ms-fontobject | December 2005 |                                     |
+| .otf      | application/font-sfnt         | March 2013    | earlier application/x-font-opentype |
+| .svg      | image/svg+xml                 | August 2011   |                                     |
+| .ttf      | application/font-sfnt         | March 2013    | earlier application/x-font-truetype |
+| .woff     | application/font-woff         | January 2013  |                                     |
+| .woff2    | font/woff2                    | March 2016    | propsed by W3C only                 |
+
+See summarizing post at [Stack Overflow] and [IANA] with [W3C WOFF]
+specifications for more information.
+
 ### Options
+
+#### fontMimeType
+Type: `Boolean`
+Default value: `false`
+
+Force using "font/..." MIME Type in the embedded font face
+definition instead of the latest IANA/W3C recommendation.
+
+```js
+grunt.initConfig({
+  embedFonts: {
+    old: {
+      options: {
+        fontMimeType: true
+      },
+      files: {
+        'dist/css/style.css': ['src/css/style.css']
+      }
+    }
+  }
+});
+```
+
+An example from the input stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url(fonts/test.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+An example from the generated output stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:font/woff;base64,ZmlsZT...") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+```
 
 #### xFontMimeType
 Type: `Boolean`
 Default value: `false`
 
-Enable using "application/x-font-..." MIME Type in the embedded font face
-definition instead of "font/...".
+Force using "application/x-font-..." MIME Type in the embedded font face
+definition instead of the latest IANA/W3C recommendation.
 
 ```js
 grunt.initConfig({
@@ -154,6 +219,8 @@ your code using Grunt.
 
 ## Release History
 
+ * 2016-12-20   v0.4.0   Prefer MIME types specified by IANA and W3C,
+                         add verbose logging
  * 2016-12-11   v0.3.0   Allow using "application/x-font-..." MIME type
  * 2016-12-11   v0.2.2   Fix processing stylesheets from multiple directories,
                          add support for otf fonts
@@ -178,3 +245,6 @@ Licensed under the MIT license.
 [Gruntfile]: http://gruntjs.com/sample-gruntfile
 [Getting Gtarted]: https://github.com/gruntjs/grunt/wiki/Getting-started
 [W3C Font fetching requirements]: http://www.w3.org/TR/css-fonts-3/#font-fetching-requirements
+[IANA]: http://www.iana.org/assignments/media-types/media-types.xhtml
+[W3C WOFF]: https://www.w3.org/TR/WOFF/#appendix-b
+[Stack Overflow]: http://stackoverflow.com/a/20723357/623816

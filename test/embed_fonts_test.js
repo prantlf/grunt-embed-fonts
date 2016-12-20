@@ -18,10 +18,24 @@ exports.embedFonts = {
     test.done();
   },
 
-  xFont: function (test) {
-    var expected = fs.readFileSync('test/x-font/expected.css').toString(),
-        actual = fs.readFileSync('test/x-font/output.css').toString();
-    test.equal(expected, actual, 'should allow using "application/x-font-..." MIME Type');
+  capitals: function (test) {
+    var expected = fs.readFileSync('test/capitals/expected.css').toString(),
+        actual = fs.readFileSync('test/capitals/output.css').toString();
+    test.equal(expected, actual, 'should handle file names in upper case');
+    test.done();
+  },
+
+  'forced-font': function (test) {
+    var expected = fs.readFileSync('test/forced-font/expected.css').toString(),
+        actual = fs.readFileSync('test/forced-font/output.css').toString();
+    test.equal(expected, actual, 'should force using "font/..." MIME Type');
+    test.done();
+  },
+
+  'forced-x-font': function (test) {
+    var expected = fs.readFileSync('test/forced-x-font/expected.css').toString(),
+        actual = fs.readFileSync('test/forced-x-font/output.css').toString();
+    test.equal(expected, actual, 'should force using "application/x-font-..." MIME Type');
     test.done();
   }
 
