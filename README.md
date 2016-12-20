@@ -182,6 +182,61 @@ An example from the generated output stylesheet:
 }
 ```
 
+#### mimeTypeOverrides
+Type: `Object`
+Default value: `{}`
+
+Override a MIME typ assignments for one or more specific file extensions
+to use the value specified in the key-value pair of the options object.
+
+This option has the highest priority; `fontMimeType`, `xFontMimeType`
+and the default MIME type assignment will not apply for the specified file
+extensions.  File extesions not specified by `mimeTypeOverrides` will
+be processed by usual rules (first by checking `fontMimeType`, then by
+checking `xFontMimeType` and finally by the choosing the preferred MIME
+type according to the latest specifications and drafts.)
+
+```js
+grunt.initConfig({
+  embedFonts: {
+    old: {
+      options: {
+        mimeTypeOverrides: {
+          otf: 'application/x-font-opentype'
+        }
+      },
+      files: {
+        'dist/css/style.css': ['src/css/style.css']
+      }
+    }
+  }
+});
+```
+
+An example from the input stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url('fonts/test.woff') format("woff")
+       url(fonts/test.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+An example from the generated output stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/font-woff;base64,ZmlsZT...") format("woff"),
+       url("data:application/x-font-opentype;base64,ZmlsZT...") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
 ### Loading
 
 Load the plugin in `Gruntfile.js`:
@@ -220,7 +275,7 @@ your code using Grunt.
 ## Release History
 
  * 2016-12-20   v0.4.0   Prefer MIME types specified by IANA and W3C,
-                         add verbose logging
+                         allow full MIME type overriding, add verbose logging
  * 2016-12-11   v0.3.0   Allow using "application/x-font-..." MIME type
  * 2016-12-11   v0.2.2   Fix processing stylesheets from multiple directories,
                          add support for otf fonts

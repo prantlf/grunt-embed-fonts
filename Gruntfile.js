@@ -48,7 +48,18 @@ module.exports = function (grunt) {
         files: {
           'test/forced-x-font/output.css': ['test/forced-x-font/input.css']
         }
-      }
+      },
+      overrides: {
+        options: {
+          mimeTypeOverrides: {
+            otf: 'application/x-font-opentype',
+            ttf: 'application/x-font-truetype'
+          }
+        },
+        files: {
+          'test/overrides/output.css': ['test/overrides/input.css']
+        }
+      },
     },
 
     nodeunit: {

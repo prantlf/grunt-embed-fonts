@@ -29,17 +29,19 @@ if (!path.isAbsolute) {
 module.exports = function (grunt) {
 
   function getDataUri(fontFile, options) {
-    var typeMatch = fontType.exec(fontFile),
+    var typeMatchResult = fontType.exec(fontFile),
+        typeMatch = typeMatchResult[1].toLowerCase(),
         faceContent = grunt.file.read(fontFile, {encoding: null}),
         fontEncoded = faceContent.toString('base64'),
-        fontMimeType;
-    typeMatch = typeMatch[1].toLowerCase();
-    if (options.fontMimeType) {
-      fontMimeType = 'font/' + typeMatch;
-    } else if (options.xFontMimeType) {
-      fontMimeType = 'application/x-font-' + typeMatch;
-    } else {
-      fontMimeType = fontMimeTypes[typeMatch];
+        fontMimeType = options.mimeTypeOverrides[typeMatch];
+    if (!fontMimeType) {
+      if (options.fontMimeType) {
+        fontMimeType = 'font/' + typeMatch;
+      } else if (options.xFontMimeType) {
+        fontMimeType = 'application/x-font-' + typeMatch;
+      } else {
+        fontMimeType = fontMimeTypes[typeMatch];
+      }
     }
     grunt.verbose.writeln('Embedding "' + fontFile + '" as "' + fontMimeType + '".');
     return 'data:' + fontMimeType + ';base64,' + fontEncoded;
@@ -87,8 +89,11 @@ module.exports = function (grunt) {
     }
   }
   
-  grunt.registerMultiTask('embedFonts', "Replace font URLs in stylesheets with data URIs including base64-encoded file content", function () {
+  grunt.registerMultiTask('embedFonts', 'Replace font URLs in stylesheets with data URIs including base64-encoded file content', function () {
     var options = this.options();
+    if (!options.mimeTypeOverrides) {
+      options.mimeTypeOverrides = {};
+    }
     this.files.forEach(function (file) {
       // Reset relative path to embedded fonts before processing another
       // stylesheet; stylesheets can be in different directories

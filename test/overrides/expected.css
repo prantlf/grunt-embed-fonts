@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/font-woff;base64,ZmlsZTExCg==") format("woff"),
+       url("data:application/x-font-truetype;base64,ZmlsZTEyCg==") format("truetype"),
+       url("data:application/x-font-opentype;base64,ZmlsZTEzCg==") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Test'
+}

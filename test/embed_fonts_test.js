@@ -37,6 +37,13 @@ exports.embedFonts = {
         actual = fs.readFileSync('test/forced-x-font/output.css').toString();
     test.equal(expected, actual, 'should force using "application/x-font-..." MIME Type');
     test.done();
+  },
+
+  overrides: function (test) {
+    var expected = fs.readFileSync('test/overrides/expected.css').toString(),
+        actual = fs.readFileSync('test/overrides/output.css').toString();
+    test.equal(expected, actual, 'should allow overriding MIME types for specific file extensions');
+    test.done();
   }
 
 };
