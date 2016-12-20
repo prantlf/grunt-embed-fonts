@@ -19,8 +19,8 @@ downloaded.
 
 From version 0.4.0 on, MIME types used by default comply with [IANA] and
 [W3C WOFF] font MIME type specifications.  If you need MIME types generated
-by previous versions (either all types font/<file ext> or all types
-application/x-font-<file ext>), look at options `fontMimeType` and
+by previous versions (either all types as "font/{file ext}" or all types
+as "application/x-font-{file ext}"), look at options `fontMimeType` and
 `xFontMimeType` below.
 
 ## Installation
@@ -87,7 +87,7 @@ to the following table:
 | .svg      | image/svg+xml                 | August 2011   |                                     |
 | .ttf      | application/font-sfnt         | March 2013    | earlier application/x-font-truetype |
 | .woff     | application/font-woff         | January 2013  |                                     |
-| .woff2    | font/woff2                    | March 2016    | propsed by W3C only                 |
+| .woff2    | font/woff2                    | March 2016    | proposed by W3C                     |
 
 See summarizing post at [Stack Overflow] and [IANA] with [W3C WOFF]
 specifications for more information.
