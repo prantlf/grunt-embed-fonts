@@ -49,6 +49,11 @@ module.exports = function (grunt) {
 
   function embedFontUrls(faceContent, options) {
     var urlMatch;
+    var mimeTypes;
+    if(options.applyTo) {
+      mimeTypes = options.applyTo.join('|');
+      fontUrl = new RegExp("url\\([\"']?([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
+    }
     while ((urlMatch = fontUrl.exec(faceContent))) {
       var fontFile = urlMatch[1];
       if (fontFile.indexOf(':') < 0) {

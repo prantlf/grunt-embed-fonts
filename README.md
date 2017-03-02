@@ -237,6 +237,55 @@ An example from the generated output stylesheet:
 }
 ```
 
+#### applyTo
+Type: `array`
+Default value: `['eot','svg','ttf','otf','woff','woff2']`
+
+Only embed specific MIME types. 
+
+The benefit of @font-face is that it allows the browser to choose which
+font-type to use. In some cases it is beneficial to embed only the most
+common MIME types and have the other files as a fall-back.
+
+```js
+grunt.initConfig({
+  embedFonts: {
+    old: {
+      options: {
+        applyTo: ['woff']
+      },
+      files: {
+        'dist/css/style.css': ['src/css/style.css']
+      }
+    }
+  }
+});
+```
+
+An example from the input stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/font-woff;base64,ZmlsZT...") format("woff"),
+       url(fonts/test.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+An example from the generated output stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/font-woff;base64,ZmlsZT...") format("woff"),
+       url(fonts/test.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
 ### Loading
 
 Load the plugin in `Gruntfile.js`:

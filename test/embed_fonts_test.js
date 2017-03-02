@@ -44,6 +44,13 @@ exports.embedFonts = {
         actual = fs.readFileSync('test/overrides/output.css').toString();
     test.equal(expected, actual, 'should allow overriding MIME types for specific file extensions');
     test.done();
+  },
+
+  'apply-to': function (test) {
+    var expected = fs.readFileSync('test/apply-to/expected.css').toString(),
+        actual = fs.readFileSync('test/apply-to/output.css').toString();
+    test.equal(expected, actual, 'should only affect woff MIME types');
+    test.done();
   }
 
 };

@@ -60,6 +60,14 @@ module.exports = function (grunt) {
           'test/overrides/output.css': ['test/overrides/input.css']
         }
       },
+      'apply-to': {
+        options: {
+          applyTo: ['woff']
+        },
+        files: {
+          'test/apply-to/output.css': ['test/apply-to/input.css']
+        }
+      }
     },
 
     nodeunit: {
