@@ -323,6 +323,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2017-03-05   v0.5.0   Added applyTo option for skipping font MIME types
  * 2016-12-20   v0.4.0   Prefer MIME types specified by IANA and W3C,
                          allow full MIME type overriding, add verbose logging
  * 2016-12-11   v0.3.0   Allow using "application/x-font-..." MIME type
@@ -338,7 +339,7 @@ your code using Grunt.
 
 ## License
 
-Copyright (c) 2015-2016 Ferdinand Prantl
+Copyright (c) 2015-2017 Ferdinand Prantl
 
 Licensed under the MIT license.
 
