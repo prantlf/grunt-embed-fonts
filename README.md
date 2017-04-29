@@ -1,5 +1,7 @@
 # grunt-embed-fonts [![NPM version](https://badge.fury.io/js/grunt-embed-fonts.png)](http://badge.fury.io/js/grunt-embed-fonts) [![Build Status](https://travis-ci.org/prantlf/grunt-embed-fonts.png)](https://travis-ci.org/prantlf/grunt-embed-fonts) [![Coverage Status](https://coveralls.io/repos/prantlf/grunt-embed-fonts/badge.svg)](https://coveralls.io/r/prantlf/grunt-embed-fonts) [![Dependency Status](https://david-dm.org/prantlf/grunt-embed-fonts.svg)](https://david-dm.org/prantlf/grunt-embed-fonts) [![devDependency Status](https://david-dm.org/prantlf/grunt-embed-fonts/dev-status.svg)](https://david-dm.org/prantlf/grunt-embed-fonts#info=devDependencies) [![devDependency Status](https://david-dm.org/prantlf/grunt-embed-fonts/peer-status.svg)](https://david-dm.org/prantlf/grunt-embed-fonts#info=peerDependencies) [![Code Climate](https://codeclimate.com/github/prantlf/grunt-embed-fonts/badges/gpa.svg)](https://codeclimate.com/github/prantlf/grunt-embed-fonts) [![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/grunt-embed-fonts) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/prantlf/grunt-embed-fonts.svg)](https://greenkeeper.io/)
+
 [![NPM Downloads](https://nodei.co/npm/grunt-embed-fonts.png?downloads=true&stars=true)](https://www.npmjs.com/package/grunt-embed-fonts)
 
 This module provides a grunt multi-task injecting content of font files into
