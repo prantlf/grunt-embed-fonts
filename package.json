@@ -1,7 +1,7 @@
 {
   "name": "grunt-embed-fonts",
   "description": "Grunt task to inject content of font files into stylesheets using data URIs.",
-  "version": "0.5.0",
+  "version": "0.0.0-development",
   "homepage": "https://github.com/prantlf/grunt-embed-fonts",
   "author": {
     "name": "Ferdinand Prantl",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/prantlf/grunt-embed-fonts.git"
+    "url": "https://github.com/prantlf/grunt-embed-fonts.git"
   },
   "bugs": {
     "url": "https://github.com/prantlf/grunt-embed-fonts/issues"
@@ -28,7 +28,8 @@
   "scripts": {
     "test": "grunt",
     "check_coverage": "GRUNT_EMBED_FONTS_COVERAGE=1 grunt",
-    "post_coverage": "GRUNT_EMBED_FONTS_COVERAGE=1 grunt default coveralls"
+    "post_coverage": "GRUNT_EMBED_FONTS_COVERAGE=1 grunt default coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
@@ -39,7 +40,8 @@
     "grunt-istanbul": "^0.7.2",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^3.5.2",
-    "time-grunt": "^1.4.0"
+    "time-grunt": "^1.4.0",
+    "semantic-release": "^6.3.6"
   },
   "keywords": [
     "gruntplugin",
