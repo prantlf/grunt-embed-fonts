@@ -323,6 +323,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2018-04-27   v1.0.0   Dropped support of Node.js 4
  * 2017-03-05   v0.5.0   Added applyTo option for skipping font MIME types
  * 2016-12-20   v0.4.0   Prefer MIME types specified by IANA and W3C,
                          allow full MIME type overriding, add verbose logging
