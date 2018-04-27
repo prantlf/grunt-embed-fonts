@@ -32,7 +32,7 @@
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "1.0.2",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-nodeunit": "^1.0.0",
@@ -40,8 +40,8 @@
     "grunt-istanbul": "^0.8.0",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^3.5.2",
-    "time-grunt": "^1.4.0",
-    "semantic-release": "^15.0.0"
+    "semantic-release": "15.1.7",
+    "time-grunt": "^1.4.0"
   },
   "keywords": [
     "gruntplugin",
