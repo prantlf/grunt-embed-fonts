@@ -57,11 +57,12 @@ module.exports = function (grunt) {
 
     var urlMatch;
     var mimeTypes;
+    var currentFontUrl = fontUrl;
     if (options.applyTo) {
       mimeTypes = options.applyTo.join('|');
-      fontUrl = new RegExp("url\\([\"']?(?!\\/\\/)([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
+      currentFontUrl = new RegExp("url\\([\"']?(?!\\/\\/)([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
     }
-    while ((urlMatch = fontUrl.exec(faceContent))) {
+    while ((urlMatch = currentFontUrl.exec(faceContent))) {
       var fontFile = urlMatch[1];
       if (fontFile.indexOf(':') < 0) {
         if (!path.isAbsolute(fontFile)) {
