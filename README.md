@@ -250,7 +250,7 @@ An example from the generated output stylesheet:
 Type: `array`
 Default value: `['eot','svg','ttf','otf','woff','woff2']`
 
-Only embed specific MIME types. 
+Only embed specific MIME types.
 
 The benefit of @font-face is that it allows the browser to choose which
 font-type to use. In some cases it is beneficial to embed only the most

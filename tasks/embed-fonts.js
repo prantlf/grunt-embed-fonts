@@ -50,7 +50,7 @@ module.exports = function (grunt) {
   function embedFontUrls(faceContent, options) {
     var urlMatch;
     var mimeTypes;
-    if(options.applyTo) {
+    if (options.applyTo) {
       mimeTypes = options.applyTo.join('|');
       fontUrl = new RegExp("url\\([\"']?([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
     }
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
       grunt.fail.warn('Processing stylesheet "' + fileSrc + '" failed\n');
     }
   }
-  
+
   grunt.registerMultiTask('embedFonts', 'Replace font URLs in stylesheets with data URIs including base64-encoded file content', function () {
     var options = this.options();
     if (!options.mimeTypeOverrides) {
