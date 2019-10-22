@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Test';
+  src: url("fonts/skip-file14.woff") format("woff"),
+       url("data:application/font-woff;base64,ZmlsZTE0Cg==") format("woff"),
+       url("data:font/woff2;base64,ZmlsZTE1Cg==") format("woff2"),
+       url(fonts/skip-file15.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Test'
+}
