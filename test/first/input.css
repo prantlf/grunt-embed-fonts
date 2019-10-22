@@ -13,6 +13,9 @@
   font-family: 'Test';
   src: url("fonts/file5.woff2") format("woff2"),
        url("http://test/font.woff") format("woff"),
+       url("//test/font.woff") format("woff"),
+       url('//test/font.woff') format("woff"),
+       url(//test/font.woff) format("woff"),
        url("data:font/woff;base64,ZmlsZQo=") format("woff"),
        url(fonts/file3.ttf) format("truetype");
   font-weight: 400;
