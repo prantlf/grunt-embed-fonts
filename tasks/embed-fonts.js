@@ -48,6 +48,13 @@ module.exports = function (grunt) {
   }
 
   function embedFontUrls(faceContent, options) {
+
+    var isMatchingFile = function (fontFile, fileNameRegExps) {
+      return fileNameRegExps.some(function (fileNameRegExp) {
+        return fontFile.match(fileNameRegExp);
+      });
+    };
+
     var urlMatch;
     var mimeTypes;
     if (options.applyTo) {
@@ -60,10 +67,12 @@ module.exports = function (grunt) {
         if (!path.isAbsolute(fontFile)) {
           fontFile = path.join(options.baseDir, fontFile);
         }
-        var fontAnchor = urlMatch[2] || '',
-            fontEmbedded = 'url("' + getDataUri(fontFile, options) + fontAnchor + '")';
-        faceContent = faceContent.substr(0, urlMatch.index) + fontEmbedded +
-          faceContent.substr(urlMatch.index + urlMatch[0].length);
+        if (!options.only || isMatchingFile(fontFile, options.only)) {
+          var fontAnchor = urlMatch[2] || '',
+              fontEmbedded = 'url("' + getDataUri(fontFile, options) + fontAnchor + '")';
+          faceContent = faceContent.substr(0, urlMatch.index) + fontEmbedded +
+            faceContent.substr(urlMatch.index + urlMatch[0].length);
+        }
       }
     }
     return faceContent;
