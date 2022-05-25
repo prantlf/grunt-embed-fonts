@@ -51,6 +51,13 @@ exports.embedFonts = {
         actual = fs.readFileSync('test/apply-to/output.css').toString();
     test.equal(expected, actual, 'should only affect woff MIME types');
     test.done();
+  },
+
+  only: function (test) {
+    var expected = fs.readFileSync('test/only/expected.css').toString(),
+        actual = fs.readFileSync('test/only/output.css').toString();
+    test.equal(expected, actual, 'should only affect filenames not starting with "skip-"');
+    test.done();
   }
 
 };

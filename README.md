@@ -250,7 +250,7 @@ An example from the generated output stylesheet:
 Type: `array`
 Default value: `['eot','svg','ttf','otf','woff','woff2']`
 
-Only embed specific MIME types. 
+Only embed specific MIME types.
 
 The benefit of @font-face is that it allows the browser to choose which
 font-type to use. In some cases it is beneficial to embed only the most
@@ -290,6 +290,53 @@ An example from the generated output stylesheet:
   font-family: 'Test';
   src: url("data:application/font-woff;base64,ZmlsZT...") format("woff"),
        url(fonts/test.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+#### only
+Type: `array`
+Default value: `[]`
+
+Only embed fonts with a name that match any of the RegExps provided.
+
+If you only want to embed some of your fonts, provide an array of RegExps that match their filenames.
+
+```js
+grunt.initConfig({
+  embedFonts: {
+    old: {
+      options: {
+        only: [/(?<!skip-)font\d+/]
+      },
+      files: {
+        'dist/css/style.css': ['src/css/style.css']
+      }
+    }
+  }
+});
+```
+
+An example from the input stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url(fonts/font12.woff) format("woff"),
+       url(fonts/skip-font13.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+```
+
+An example from the generated output stylesheet:
+
+```css
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/font-woff;base64,ZmlsZT...") format("woff"),
+       url(fonts/skip-font13.otf) format("opentype");
   font-weight: 400;
   font-style: normal;
 }

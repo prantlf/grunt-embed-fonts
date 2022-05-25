@@ -11,7 +11,7 @@
 
 var path = require('path'),
     fontFace = /@font-face\s*\{[^\}]*}/g,
-    fontUrl = /url\(["']?([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/ig,
+    fontUrl = /url\(["']?(?!\/\/)([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/ig,
     fontType = /\.((?:[a-zA-Z]+)2?)$/,
     fontMimeTypes = {
       eot: 'application/vnd.ms-fontobject',
@@ -48,22 +48,32 @@ module.exports = function (grunt) {
   }
 
   function embedFontUrls(faceContent, options) {
+
+    var isMatchingFile = function (fontFile, fileNameRegExps) {
+      return fileNameRegExps.some(function (fileNameRegExp) {
+        return fontFile.match(fileNameRegExp);
+      });
+    };
+
     var urlMatch;
     var mimeTypes;
-    if(options.applyTo) {
+    var currentFontUrl = fontUrl;
+    if (options.applyTo) {
       mimeTypes = options.applyTo.join('|');
-      fontUrl = new RegExp("url\\([\"']?([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
+      currentFontUrl = new RegExp("url\\([\"']?(?!\\/\\/)([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
     }
-    while ((urlMatch = fontUrl.exec(faceContent))) {
+    while ((urlMatch = currentFontUrl.exec(faceContent))) {
       var fontFile = urlMatch[1];
       if (fontFile.indexOf(':') < 0) {
         if (!path.isAbsolute(fontFile)) {
           fontFile = path.join(options.baseDir, fontFile);
         }
-        var fontAnchor = urlMatch[2] || '',
-            fontEmbedded = 'url("' + getDataUri(fontFile, options) + fontAnchor + '")';
-        faceContent = faceContent.substr(0, urlMatch.index) + fontEmbedded +
-          faceContent.substr(urlMatch.index + urlMatch[0].length);
+        if (!options.only || isMatchingFile(fontFile, options.only)) {
+          var fontAnchor = urlMatch[2] || '',
+              fontEmbedded = 'url("' + getDataUri(fontFile, options) + fontAnchor + '")';
+          faceContent = faceContent.substr(0, urlMatch.index) + fontEmbedded +
+            faceContent.substr(urlMatch.index + urlMatch[0].length);
+        }
       }
     }
     return faceContent;
@@ -93,7 +103,7 @@ module.exports = function (grunt) {
       grunt.fail.warn('Processing stylesheet "' + fileSrc + '" failed\n');
     }
   }
-  
+
   grunt.registerMultiTask('embedFonts', 'Replace font URLs in stylesheets with data URIs including base64-encoded file content', function () {
     var options = this.options();
     if (!options.mimeTypeOverrides) {

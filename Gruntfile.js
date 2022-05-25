@@ -67,6 +67,14 @@ module.exports = function (grunt) {
         files: {
           'test/apply-to/output.css': ['test/apply-to/input.css']
         }
+      },
+      only: {
+        options: {
+          only: [/(?<!skip-)file\d+/]
+        },
+        files: {
+          'test/only/output.css': ['test/only/input.css']
+        }
       }
     },
 
