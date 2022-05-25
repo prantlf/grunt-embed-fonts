@@ -22,10 +22,6 @@ var path = require('path'),
       woff2: 'font/woff2'
     };
 
-if (!path.isAbsolute) {
-  path.isAbsolute = require('path-is-absolute');
-}
-
 module.exports = function (grunt) {
   function getDataUri(fontFile, options) {
     var typeMatchResult = fontType.exec(fontFile),
@@ -97,6 +93,7 @@ module.exports = function (grunt) {
       var fileContent = grunt.file.read(fileSrc);
       fileContent = updateFontFaces(fileContent, options);
       grunt.file.write(fileDest, fileContent);
+      /* c8 ignore next 4 */
     } catch (error) {
       grunt.log.error(error);
       grunt.fail.warn('Processing stylesheet "' + fileSrc + '" failed\n');
