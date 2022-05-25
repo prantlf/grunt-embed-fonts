@@ -1,13 +1,9 @@
 'use strict';
 
 module.exports = function (grunt) {
-
-  var coverage = process.env.GRUNT_EMBED_FONTS_COVERAGE;
-
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-
     jshint: {
       all:     [
         'Gruntfile.js',
@@ -83,48 +79,13 @@ module.exports = function (grunt) {
     },
 
     clean: {
-      tests:    ['test/output.css'],
-      coverage: ['coverage']
-    },
-
-    instrument: {
-      files: 'tasks/*.js',
-      options: {
-        lazy: true,
-        basePath: 'coverage/'
-      }
-    },
-
-    storeCoverage: {
-      options: {
-        dir: 'coverage'
-      }
-    },
-
-    makeReport: {
-      src: 'coverage/coverage.json',
-      options: {
-        type: 'lcov',
-        dir: 'coverage',
-        print: 'detail'
-      }
-    },
-
-    coveralls: {
-      tests: {
-        src: 'coverage/lcov.info'
-      }
+      tests:    ['test/output.css']
     }
-
   });
 
-  grunt.loadTasks(coverage ? 'coverage/tasks' : 'tasks');
+  grunt.loadTasks('tasks');
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', coverage ?
-    ['jshint', 'clean', 'instrument', 'embedFonts', 'nodeunit',
-     'storeCoverage', 'makeReport'] :
-    ['jshint', 'clean:tests', 'embedFonts', 'nodeunit']);
-
+  grunt.registerTask('default', ['jshint', 'clean', 'embedFonts', 'nodeunit']);
 };

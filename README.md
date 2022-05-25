@@ -1,15 +1,9 @@
 # grunt-embed-fonts
-[![NPM version](https://badge.fury.io/js/grunt-embed-fonts.png)](http://badge.fury.io/js/grunt-embed-fonts)
-[![Build Status](https://travis-ci.org/prantlf/grunt-embed-fonts.png)](https://travis-ci.org/prantlf/grunt-embed-fonts)
-[![Coverage Status](https://coveralls.io/repos/prantlf/grunt-embed-fonts/badge.svg)](https://coveralls.io/r/prantlf/grunt-embed-fonts)
-[![Dependency Status](https://david-dm.org/prantlf/grunt-embed-fonts.svg)](https://david-dm.org/prantlf/grunt-embed-fonts)
-[![devDependency Status](https://david-dm.org/prantlf/grunt-embed-fonts/dev-status.svg)](https://david-dm.org/prantlf/grunt-embed-fonts#info=devDependencies)
-[![devDependency Status](https://david-dm.org/prantlf/grunt-embed-fonts/peer-status.svg)](https://david-dm.org/prantlf/grunt-embed-fonts#info=peerDependencies)
-[![Code Climate](https://codeclimate.com/github/prantlf/grunt-embed-fonts/badges/gpa.svg)](https://codeclimate.com/github/prantlf/grunt-embed-fonts)
-[![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/grunt-embed-fonts)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-[![NPM Downloads](https://nodei.co/npm/grunt-embed-fonts.png?downloads=true&stars=true)](https://www.npmjs.com/package/grunt-embed-fonts)
+[![Latest version](https://img.shields.io/npm/v/grunt-embed-fonts)
+ ![Dependency status](https://img.shields.io/librariesio/release/npm/grunt-embed-fonts)
+](https://www.npmjs.com/package/grunt-embed-fonts)
+[![Coverage](https://codecov.io/gh/prantlf/grunt-embed-fonts/branch/master/graph/badge.svg)](https://codecov.io/gh/prantlf/grunt-embed-fonts)
 
 This module provides a grunt multi-task injecting content of font files into
 stylesheets using data URIs.
@@ -34,7 +28,7 @@ as "application/x-font-{file ext}"), look at options `fontMimeType` and
 
 ## Installation
 
-You need [node >= 0.10][node], [npm] and [grunt >= 0.4][Grunt] installed
+You need [node >= 6][node], [npm] and [grunt >= 0.4][Grunt] installed
 and your project build managed by a [Gruntfile] with the necessary modules
 listed in [package.json].  If you haven't used Grunt before, be sure to
 check out the [Getting Started] guide, as it explains how to create a
@@ -379,7 +373,7 @@ your code using Grunt.
 
 ## License
 
-Copyright (c) 2015-2012 Ferdinand Prantl
+Copyright (c) 2015-2022 Ferdinand Prantl
 
 Licensed under the MIT license.
 
