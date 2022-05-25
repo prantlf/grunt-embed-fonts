@@ -1,7 +1,7 @@
 // grunt-embed-fonts
 // https://github.com/prantlf/grunt-embed-fonts
 //
-// Copyright (c) 2015-2016 Ferdinand Prantl
+// Copyright (c) 2015-2022 Ferdinand Prantl
 // Licensed under the MIT license.
 //
 // Injects content of font files into stylesheets by replacing the relative
@@ -27,7 +27,6 @@ if (!path.isAbsolute) {
 }
 
 module.exports = function (grunt) {
-
   function getDataUri(fontFile, options) {
     var typeMatchResult = fontType.exec(fontFile),
         typeMatch = typeMatchResult[1].toLowerCase(),

@@ -377,26 +377,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding
 style.  Add unit tests for any new or changed functionality. Lint and test
 your code using Grunt.
 
-## Release History
-
- * 2018-04-27   v1.0.0   Dropped support of Node.js 4
- * 2017-03-05   v0.5.0   Added applyTo option for skipping font MIME types
- * 2016-12-20   v0.4.0   Prefer MIME types specified by IANA and W3C,
-                         allow full MIME type overriding, add verbose logging
- * 2016-12-11   v0.3.0   Allow using "application/x-font-..." MIME type
- * 2016-12-11   v0.2.2   Fix processing stylesheets from multiple directories,
-                         add support for otf fonts
- * 2016-12-11   v0.2.1   Fix malformed BASE64 encoding
- * 2016-26-08   v0.2.0   Upgrade to Grunt 1.x
- * 2016-03-05   v0.1.3   Update dependencies, improve build testing
- * 2016-01-09   v0.1.2   Fix e-mail, update dependencies and copyright
-                         year, bump version number
- * 2015-07-24   v0.1.1   Add support for NodeJS 0.10.x
- * 2015-07-24   v0.1.0   Initial release
-
 ## License
 
-Copyright (c) 2015-2019 Ferdinand Prantl
+Copyright (c) 2015-2012 Ferdinand Prantl
 
 Licensed under the MIT license.
 
