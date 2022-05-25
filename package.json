@@ -8,6 +8,9 @@
     "email": "prantlf@gmail.com",
     "url": "http://prantl.tk"
   },
+  "contributors": [
+    "Krisztian Pifko <krisztian.pifko@prezi.com>"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/prantlf/grunt-embed-fonts.git"
