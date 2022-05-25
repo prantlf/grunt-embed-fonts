@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/prantlf/grunt-embed-fonts/compare/v1.0.3...v1.1.0) (2022-05-25)
+
+
+### Bug Fixes
+
+* Remove path-is-absolute dependency ([40d6528](https://github.com/prantlf/grunt-embed-fonts/commit/40d6528f74676db12badb30c2429e910424606aa))
+
+
+### Features
+
+* Ignore protocol relative urls and process only matching fonts ([#21](https://github.com/prantlf/grunt-embed-fonts/issues/21)) ([9f2269c](https://github.com/prantlf/grunt-embed-fonts/commit/9f2269c122108df8cf558f8b204c107ffef1ea14))
+
 ## 1.0.0 (2018-04-27)
 
 Dropped support of Node.js 4
