@@ -65,13 +65,13 @@
     ]
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "c8": "^7.11.3",
-    "grunt": "^1.5.3",
+    "c8": "^7.14.0",
+    "grunt": "^1.6.1",
     "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-nodeunit": "^4.0.0",
+    "grunt-contrib-nodeunit": "^5.0.0",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^5.1.0",
     "time-grunt": "^2.0.0"
