@@ -25,6 +25,13 @@ exports.embedFonts = {
     test.done();
   },
 
+  query: function (test) {
+    var expected = fs.readFileSync('test/query/expected.css').toString(),
+        actual = fs.readFileSync('test/query/output.css').toString();
+    test.equal(expected, actual, 'should handle file names with a URL query');
+    test.done();
+  },
+
   'forced-font': function (test) {
     var expected = fs.readFileSync('test/forced-font/expected.css').toString(),
         actual = fs.readFileSync('test/forced-font/output.css').toString();

@@ -11,7 +11,7 @@
 
 var path = require('path'),
     fontFace = /@font-face\s*\{[^\}]*}/g,
-    fontUrl = /url\(["']?(?!\/\/)([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*))?["']?\)/ig,
+    fontUrl = /url\(["']?(?!\/\/)([^\?#"'\)]+\.(?:eot|svg|ttf|otf|woff|woff2))((?:\?[^#"'\)]*)?(?:#[^"'\)]*)?)?["']?\)/ig,
     fontType = /\.((?:[a-zA-Z]+)2?)$/,
     fontMimeTypes = {
       eot: 'application/vnd.ms-fontobject',
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
     var currentFontUrl = fontUrl;
     if (options.applyTo) {
       mimeTypes = options.applyTo.join('|');
-      currentFontUrl = new RegExp("url\\([\"']?(?!\\/\\/)([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*))?[\"']?\\)", "ig");
+      currentFontUrl = new RegExp("url\\([\"']?(?!\\/\\/)([^\\?#\"'\\)]+\\.(?:" + mimeTypes + "))((?:\\?[^#\"'\\)]*)?(?:#[^\"'\\)]*)?)?[\"']?\\)", "ig");
     }
     while ((urlMatch = currentFontUrl.exec(faceContent))) {
       var fontFile = urlMatch[1];
@@ -91,8 +91,10 @@ module.exports = function (grunt) {
         options.baseDir = path.dirname(fileSrc);
       }
       var fileContent = grunt.file.read(fileSrc);
-      fileContent = updateFontFaces(fileContent, options);
-      grunt.file.write(fileDest, fileContent);
+      var newFileContent = updateFontFaces(fileContent, options);
+      if (fileContent !== newFileContent) {
+        grunt.file.write(fileDest, newFileContent);
+      }
       /* c8 ignore next 4 */
     } catch (error) {
       grunt.log.error(error);

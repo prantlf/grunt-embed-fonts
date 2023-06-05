@@ -29,6 +29,11 @@ module.exports = function (grunt) {
           'test/capitals/output.css': ['test/capitals/input.css']
         }
       },
+      query: {
+        files: {
+          'test/query/output.css': ['test/query/input.css']
+        }
+      },
       'forced-font': {
         options: {
           fontMimeType: true

@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Test';
+  src: url("data:application/font-woff;base64,ZmlsZTE2Cg==?param") format("woff"),
+       url("data:font/woff2;base64,ZmlsZTE3Cg==?param#") format("woff2"),
+       url("data:application/vnd.ms-fontobject;base64,ZmlsZTE4Cg==?#") format("eot"),
+       url("data:application/font-sfnt;base64,ZmlsZTE5Cg==#") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Test'
+}
