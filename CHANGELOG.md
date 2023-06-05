@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/prantlf/grunt-embed-fonts/compare/v1.1.0...v1.1.1) (2023-06-05)
+
+
+### Bug Fixes
+
+* Recognise a not empty URL query in the font URL/path ([6cbf3f1](https://github.com/prantlf/grunt-embed-fonts/commit/6cbf3f180a584c95d6a5d99a8fa2684c1b17797c))
+
 # [1.1.0](https://github.com/prantlf/grunt-embed-fonts/compare/v1.0.3...v1.1.0) (2022-05-25)
 
 
